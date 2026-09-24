@@ -11,12 +11,18 @@ export default async function handler(req, res) {
 
     const API_KEY = "PREMIUM04JFHDUDJAISKXNRNDIAKNX";
 
-    const url = new URL(`https://hyerls.my.id/api/${endpoint}`);
+    const endpointName = endpoint.endsWith(".php")
+      ? endpoint
+      : `${endpoint}.php`;
+
+    const url = new URL(
+      `https://hyerls.my.id/api/${endpointName}`
+    );
 
     url.searchParams.set("key", API_KEY);
 
     for (const [key, value] of Object.entries(params)) {
-      if (value !== undefined) {
+      if (value !== undefined && key !== "endpoint") {
         url.searchParams.set(key, value);
       }
     }
@@ -26,19 +32,21 @@ export default async function handler(req, res) {
     const text = await response.text();
 
     let data;
+
     try {
       data = JSON.parse(text);
     } catch {
-      data = {
+      return res.status(502).json({
         success: false,
-        error: text
-      };
+        error: "Server HYERLS mengembalikan HTML, bukan JSON",
+        preview: text.slice(0, 300)
+      });
     }
 
     return res.status(response.status).json(data);
 
   } catch (error) {
-    console.error(error);
+    console.error("Proxy error:", error);
 
     return res.status(500).json({
       success: false,
