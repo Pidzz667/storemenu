@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     return res.end(JSON.stringify({success:false,error:"Tool tidak diizinkan"}));
   }
 
-  const key = process.env.HYERLS_API_KEY;
+  const API_KEY = "PREMIUM04JFHDUDJAISKXNRNDIAKNX";
   if (!key) {
     res.writeHead(500, {...cors, "Content-Type":"application/json"});
     return res.end(JSON.stringify({success:false,error:"HYERLS_API_KEY belum dipasang di Vercel"}));
