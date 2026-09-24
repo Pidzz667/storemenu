@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070b16">
+  <title>Pidz Store — Free Fire ID Checker</title>
+  <meta name="description" content="Cek informasi akun Free Fire menggunakan Player ID.">
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#050812;color:#eef4ff}
+    body{overflow-x:hidden;background:
+      radial-gradient(circle at 20% 10%,rgba(0,212,255,.12),transparent 28%),
+      radial-gradient(circle at 85% 15%,rgba(124,58,237,.16),transparent 30%),
+      linear-gradient(180deg,#050812,#080b14 55%,#05070e)}
+    .orb{position:fixed;border-radius:50%;filter:blur(70px);opacity:.22;pointer-events:none}.o1{width:180px;height:180px;background:#00d9ff;top:8%;left:-70px}.o2{width:240px;height:240px;background:#7c3aed;right:-100px;bottom:10%}
+    .wrap{width:min(980px,92%);margin:auto;padding:38px 0 55px;position:relative}
+    header{text-align:center;margin:12px 0 30px}.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.04);font-size:12px;color:#9fb0c9;letter-spacing:.4px}
+    .dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 14px #4ade80}.brand{font-size:clamp(32px,7vw,58px);font-weight:900;letter-spacing:-2.5px;margin:16px 0 5px;background:linear-gradient(90deg,#fff,#9defff,#b99cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sub{color:#8c9ab0;margin:0;font-size:14px}
+    .card{background:rgba(10,16,29,.78);border:1px solid rgba(255,255,255,.09);border-radius:24px;box-shadow:0 25px 80px rgba(0,0,0,.3);backdrop-filter:blur(18px);overflow:hidden}
+    .search{padding:22px;display:flex;gap:12px}.input{flex:1;min-width:0;background:#070c17;border:1px solid #1c2a40;border-radius:15px;color:#fff;font-size:17px;padding:16px 17px;outline:none;transition:.2s}.input:focus{border-color:#00cfff;box-shadow:0 0 0 4px rgba(0,207,255,.08)}
+    button{border:0;border-radius:15px;padding:0 24px;background:linear-gradient(135deg,#00c6ff,#7c3aed);color:#fff;font-weight:800;font-size:15px;cursor:pointer;min-width:120px;box-shadow:0 12px 30px rgba(0,198,255,.16);transition:.2s}button:hover{transform:translateY(-1px);filter:brightness(1.08)}button:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    .hint{padding:0 23px 20px;color:#6f7f96;font-size:12px}
+    .status{display:none;margin:0 22px 20px;padding:13px 15px;border-radius:13px;font-size:13px}.status.show{display:block}.status.error{background:rgba(239,68,68,.09);border:1px solid rgba(239,68,68,.2);color:#ff9b9b}.status.ok{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.16);color:#8ff0ae}
+    #result{padding:0 22px 24px;display:none}.title{display:flex;justify-content:space-between;align-items:center;margin:8px 0 14px}.title h2{font-size:17px;margin:0}.count{font-size:11px;color:#75859d}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.item{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);padding:14px;border-radius:15px;min-width:0}.key{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#71819a;margin-bottom:5px}.value{font-size:14px;color:#eaf2ff;word-break:break-word}
+    .empty{text-align:center;color:#77869b;padding:20px}
+    footer{text-align:center;color:#5e6c80;font-size:12px;margin-top:22px}.dev{color:#9ca9bc;font-weight:700}
+    .loader{display:none;padding:26px 22px 30px;text-align:center}.loader.show{display:block}.scan{font-size:28px;font-weight:900;letter-spacing:2px;margin-bottom:8px;background:linear-gradient(90deg,#00d9ff,#fff,#a78bfa,#00d9ff);background-size:300% 100%;-webkit-background-clip:text;color:transparent;animation:shine 1.6s linear infinite}
+    .loader p{margin:0;color:#71819a;font-size:12px}.bar{height:3px;background:#111a2a;border-radius:99px;margin:18px auto 0;max-width:360px;overflow:hidden}.bar i{display:block;height:100%;width:40%;background:linear-gradient(90deg,transparent,#00d9ff,#a78bfa,transparent);animation:load 1s ease-in-out infinite}
+    @keyframes shine{to{background-position:300% 0}}@keyframes load{from{transform:translateX(-120%)}to{transform:translateX(280%)}}
+    @media(max-width:620px){.search{flex-direction:column}.search button{height:52px}.grid{grid-template-columns:1fr}.wrap{padding-top:22px}}
+  </style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div>
+<main class="wrap">
+  <header>
+    <div class="badge"><span class="dot"></span> ONLINE • FREE FIRE ID CHECKER</div>
+    <div class="brand">PIDZ STORE</div>
+    <p class="sub">Cek informasi akun Free Fire hanya dengan Player ID</p>
+  </header>
+
+  <section class="card">
+    <form class="search" id="form">
+      <input class="input" id="uid" inputmode="numeric" autocomplete="off" placeholder="Masukkan Player ID Free Fire..." maxlength="30" required>
+      <button id="btn" type="submit">CEK ID</button>
+    </form>
+    <div class="hint">Contoh: 3616810990</div>
+    <div id="status" class="status"></div>
+    <div id="loader" class="loader">
+      <div class="scan" id="scanText">MENGHUBUNGKAN...</div>
+      <p id="loaderText">Menghubungi server data Free Fire</p>
+      <div class="bar"><i></i></div>
+    </div>
+    <div id="result">
+      <div class="title"><h2>Detail Akun</h2><span class="count" id="count"></span></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+  <footer>Developed with ⚡ by <span class="dev">Pidz Store</span></footer>
+</main>
+
+<script>
+const form=document.getElementById('form'), uid=document.getElementById('uid'), btn=document.getElementById('btn');
+const statusBox=document.getElementById('status'), loader=document.getElementById('loader'), result=document.getElementById('result');
+const grid=document.getElementById('grid'), count=document.getElementById('count');
+const scan=document.getElementById('scanText'), loaderText=document.getElementById('loaderText');
+const messages=[
+  ['MENGECEK ID...','Memvalidasi Player ID'],
+  ['MENGAMBIL DATA...','Mengambil informasi akun'],
+  ['MEMPROSES...','Menyusun detail akun'],
+  ['HAMPIR SELESAI...','Menyiapkan hasil pengecekan']
+];
+let timer;
+function setStatus(msg,type='error'){statusBox.textContent=msg;statusBox.className='status show '+type}
+function startLoader(){
+  let i=0; loader.classList.add('show'); result.style.display='none'; statusBox.className='status';
+  const tick=()=>{scan.textContent=messages[i][0];loaderText.textContent=messages[i][1];i=(i+1)%messages.length}; tick(); timer=setInterval(tick,700);
+}
+function stopLoader(){clearInterval(timer);loader.classList.remove('show')}
+function flatten(obj,prefix='',out=[]){
+  if(obj===null||obj===undefined)return out;
+  if(typeof obj!=='object'){out.push([prefix||'Value',String(obj)]);return out}
+  if(Array.isArray(obj)){obj.forEach((v,i)=>flatten(v,`${prefix}[${i+1}]`,out));return out}
+  for(const [k,v] of Object.entries(obj)){
+    const label=(prefix?prefix+' • ':'')+k.replace(/[_-]/g,' ');
+    if(v && typeof v==='object') flatten(v,label,out); else out.push([label,v===null?'—':String(v)]);
+  }
+  return out;
+}
+function prettyKey(k){return k.split(' • ').map(x=>x.replace(/\b\w/g,c=>c.toUpperCase())).join(' • ')}
+function render(data){
+  let payload=data?.data ?? data?.result ?? data?.account ?? data;
+  const rows=flatten(payload).filter(x=>x[1]!==''&&x[1]!=='undefined');
+  grid.innerHTML='';
+  if(!rows.length){grid.innerHTML='<div class="empty">Data akun tidak ditemukan.</div>';count.textContent='';}
+  else{
+    rows.forEach(([k,v])=>{const el=document.createElement('div');el.className='item';el.innerHTML=`<div class="key">${escapeHtml(prettyKey(k))}</div><div class="value">${escapeHtml(v)}</div>`;grid.appendChild(el)});
+    count.textContent=rows.length+' informasi';
+  }
+  result.style.display='block';
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const id=uid.value.trim();
+  if(!/^\d+$/.test(id)){setStatus('Player ID harus berupa angka.');return}
+  btn.disabled=true;startLoader();
+  try{
+    const r=await fetch('/api/cekid?id='+encodeURIComponent(id),{headers:{'Accept':'application/json'}});
+    const data=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(data.error||'Server API mengembalikan error.');
+    render(data);setStatus('ID berhasil dicek.','ok');
+  }catch(err){setStatus(err.message||'Gagal mengambil data. Coba lagi.');}
+  finally{stopLoader();btn.disabled=false}
+});
+</script>
+</body>
+</html>
