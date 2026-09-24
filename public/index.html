@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIDZ TOOLS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#090313;--panel:rgba(28,10,48,.72);--panel2:rgba(45,17,75,.58);
+  --purple:#9b4dff;--purple2:#d18aff;--pink:#ff4fd8;--text:#f7efff;--muted:#b9a7c9;
+  --border:rgba(205,143,255,.20);--shadow:0 20px 70px rgba(112,33,201,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);font-family:Inter,sans-serif;background:
+radial-gradient(circle at 15% 5%,rgba(148,63,255,.22),transparent 30%),
+radial-gradient(circle at 90% 10%,rgba(255,72,214,.14),transparent 25%),var(--bg);min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(to bottom,black,transparent 80%);z-index:-1}
+.blob{position:fixed;border-radius:50%;filter:blur(80px);opacity:.22;z-index:-1;animation:float 12s ease-in-out infinite}
+.b1{width:300px;height:300px;background:#8a2cff;left:-100px;top:35%}.b2{width:260px;height:260px;background:#ff27c8;right:-90px;top:55%;animation-delay:-5s}
+@keyframes float{50%{transform:translate(30px,-35px) scale(1.08)}}
+#intro{position:fixed;inset:0;background:#08020f;display:grid;place-items:center;z-index:100;animation:introOut .9s ease 2.5s forwards}
+.intro-inner{text-align:center}
+.intro-ring{width:150px;height:150px;margin:auto;border-radius:50%;border:1px solid rgba(210,145,255,.35);box-shadow:0 0 80px rgba(159,70,255,.55),inset 0 0 35px rgba(209,138,255,.12);display:grid;place-items:center;animation:ring 1.5s ease-in-out infinite}
+.intro-text{font-family:"Space Grotesk";font-size:clamp(34px,8vw,76px);font-weight:700;letter-spacing:.12em;background:linear-gradient(100deg,#fff,#c978ff,#ff7ce8,#fff);background-size:300% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:shine 2s linear infinite, rise 1s ease both}
+.intro-sub{margin-top:15px;color:#a78cb8;letter-spacing:.28em;font-size:11px;text-transform:uppercase;opacity:0;animation:fade .7s ease 1s forwards}
+@keyframes ring{50%{transform:scale(1.06);box-shadow:0 0 110px rgba(159,70,255,.75)}}
+@keyframes shine{to{background-position:300% center}} @keyframes rise{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
+@keyframes fade{to{opacity:1}} @keyframes introOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+header{max-width:1200px;margin:auto;padding:25px 22px 10px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+.brand{font-family:"Space Grotesk";font-size:21px;font-weight:700;letter-spacing:.08em}.brand span{color:var(--purple2)}
+.status{font-size:12px;color:#cbb8d8;padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.03)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#78ffb0;box-shadow:0 0 10px #78ffb0;margin-right:7px}
+.hero{max-width:1200px;margin:45px auto 35px;padding:0 22px;display:grid;grid-template-columns:1.35fr .65fr;gap:28px;align-items:center}
+.hero h1{font-family:"Space Grotesk";font-size:clamp(42px,7vw,82px);line-height:.92;margin:0 0 18px;letter-spacing:-.055em}
+.gradient{background:linear-gradient(110deg,#fff,#d296ff 40%,#ff65dc 75%,#fff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero p{max-width:650px;color:var(--muted);line-height:1.7;font-size:15px}
+.hero-card{min-height:210px;border:1px solid var(--border);background:linear-gradient(145deg,rgba(58,19,95,.8),rgba(21,7,38,.65));border-radius:28px;box-shadow:var(--shadow);padding:25px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:.35s}
+.hero-card:hover{transform:perspective(900px) rotateY(-5deg) rotateX(4deg) translateY(-5px)}
+.hero-card:after{content:"";position:absolute;width:180px;height:180px;background:var(--pink);filter:blur(80px);opacity:.18;right:-60px;top:-70px}
+.hero-card .orb{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#fff,#bd63ff 50%,#5e12b8);box-shadow:0 0 45px #a34dff;animation:orb 4s ease-in-out infinite}
+@keyframes orb{50%{transform:translate(70px,20px) scale(1.15);box-shadow:0 0 75px #e263ff}}
+.hero-card h3{margin:20px 0 5px}.hero-card small{color:var(--muted)}
+.wrap{max-width:1200px;margin:auto;padding:0 22px 70px}
+.toolbar{display:flex;gap:12px;margin:15px 0 28px}.search{flex:1}
+input,textarea,select{width:100%;border:1px solid var(--border);background:rgba(12,3,22,.68);color:#fff;border-radius:14px;padding:13px 14px;outline:none;font:inherit;transition:.2s}
+input:focus,textarea:focus,select:focus{border-color:rgba(196,121,255,.7);box-shadow:0 0 0 4px rgba(154,71,255,.08)}
+button{border:0;color:#fff;background:linear-gradient(135deg,#8c38f2,#d15eff);padding:12px 17px;border-radius:13px;font-weight:700;cursor:pointer;box-shadow:0 10px 25px rgba(137,46,255,.25);transition:.2s}
+button:hover{transform:translateY(-2px);filter:brightness(1.08)}button.secondary{background:rgba(255,255,255,.06);border:1px solid var(--border);box-shadow:none}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px}
+.cat{padding:18px 12px;text-align:center;border:1px solid var(--border);background:rgba(28,9,45,.6);border-radius:20px;cursor:pointer;transition:.3s;position:relative;overflow:hidden}
+.cat:hover,.cat.active{transform:translateY(-5px);border-color:rgba(204,133,255,.6);box-shadow:0 15px 35px rgba(127,46,214,.18);background:linear-gradient(145deg,rgba(71,22,111,.75),rgba(30,8,48,.72))}
+.cat-icon{width:55px;height:55px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;font-size:24px;background:radial-gradient(circle at 35% 25%,#e2adff,#8b32eb 65%,#3d0874);box-shadow:0 8px 25px rgba(150,60,255,.35)}
+.cat b{font-size:13px}.cat small{display:block;color:#9d89ad;margin-top:4px;font-size:10px}
+.page-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px}.page-title h2{margin:0;font-family:"Space Grotesk";font-size:25px}.page-title span{font-size:11px;color:#8f7ba0}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.tool{border:1px solid var(--border);background:linear-gradient(145deg,rgba(35,12,58,.76),rgba(15,4,26,.8));border-radius:20px;padding:18px;box-shadow:0 12px 40px rgba(0,0,0,.16);transition:.3s;animation:cardIn .5s ease both}
+.tool:hover{transform:translateY(-5px);border-color:rgba(208,142,255,.5);box-shadow:0 18px 50px rgba(111,33,181,.2)}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tool-head{display:flex;gap:12px;align-items:center;margin-bottom:13px}.tool-ico{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:rgba(154,62,255,.18);border:1px solid var(--border);font-size:19px}.tool h3{font-size:14px;margin:0}.tool p{font-size:11px;color:#9f8bab;margin:3px 0 0}
+.form{display:grid;gap:9px}.row{display:grid;grid-template-columns:1fr auto;gap:8px}.tool button{width:100%}
+.result{margin-top:12px;border:1px solid rgba(207,142,255,.12);background:rgba(0,0,0,.18);border-radius:13px;padding:11px;font-size:11px;color:#d8cbe1;max-height:260px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.result img{max-width:100%;border-radius:10px;margin-top:8px}.result a{color:#d99cff}.hidden{display:none!important}
+.notice{margin:20px 0;padding:13px 15px;border:1px solid rgba(255,180,92,.25);background:rgba(255,154,47,.06);border-radius:14px;color:#cdb8d5;font-size:11px;line-height:1.6}
+footer{text-align:center;color:#705c80;font-size:11px;padding:25px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.tools{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){header{padding-top:18px}.hero{margin-top:30px}.categories{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:1fr}.toolbar{flex-direction:column}.hero-card{display:none}}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<div id="intro"><div class="intro-inner"><div class="intro-ring"><div class="intro-text">PIDZ</div></div><div class="intro-sub">TOOLS • UTILITY • DIGITAL</div></div></div>
+
+<header>
+  <div class="brand">PIDZ <span>TOOLS</span></div>
+  <div class="status"><i class="dot"></i> Rumah API connected</div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Semua tools.<br><span class="gradient">Satu tempat.</span></h1>
+    <p>Dashboard utility dengan kategori terpisah, animasi halus, dan proxy server supaya API key tidak diumbar di browser. Karena menaruh API key di JavaScript publik adalah cara tercepat mengubah API berbayar menjadi sumbangan untuk internet.</p>
+  </div>
+  <div class="hero-card"><div class="orb"></div><h3>PIDZ TOOLBOX</h3><small>Download, media, developer, AI, security & utilities.</small></div>
+</section>
+
+<main class="wrap">
+  <div class="toolbar">
+    <div class="search"><input id="search" placeholder="Cari tools..."></div>
+    <button class="secondary" onclick="resetFilter()">Semua</button>
+  </div>
+  <div class="categories" id="categories"></div>
+  <div class="page-title"><h2 id="pageTitle">Semua Tools</h2><span id="count"></span></div>
+  <div class="tools" id="tools"></div>
+  <div class="notice">Catatan: endpoint Rumah API yang Anda berikan menerima parameter URL. Untuk fitur yang meminta <b>LINK_GAMBAR</b>, upload file lokal belum otomatis bisa dipakai oleh server API eksternal karena file tersebut tidak punya URL publik. Tool tetap menyediakan input URL gambar.</div>
+</main>
+<footer>PIDZ TOOLS • built for utility, not for making humans click 47 buttons to download one video.</footer>
+
+<script>
+const CATEGORIES = [
+ {id:"download",name:"Download",icon:"↓",desc:"Media downloader"},
+ {id:"media",name:"Media",icon:"◉",desc:"Search & lyrics"},
+ {id:"ai",name:"AI & Image",icon:"✦",desc:"AI utilities"},
+ {id:"developer",name:"Developer",icon:"⌘",desc:"Dev utilities"},
+ {id:"security",name:"Security",icon:"◇",desc:"Domain & IP"},
+ {id:"generator",name:"Generator",icon:"✧",desc:"Generate data"},
+ {id:"text",name:"Text",icon:"T",desc:"Encode & analyze"},
+ {id:"other",name:"Other",icon:"⋮",desc:"Misc utilities"}
+];
+
+const TOOLS = [
+ {id:"ytsearch",cat:"media",icon:"▶",name:"YouTube Search",desc:"Cari video YouTube",fields:[["q","Judul video"]]},
+ {id:"lyric",cat:"media",icon:"♫",name:"Search Lyrics",desc:"Cari lirik lagu",fields:[["q","Judul lagu"]]},
+ {id:"ytplay",cat:"media",icon:"▶",name:"YouTube Play",desc:"Cari & putar hasil audio/video",fields:[["q","Judul lagu"]]},
+ {id:"spotify",cat:"download",icon:"●",name:"Spotify Downloader",desc:"Download dari URL track",fields:[["url","URL Spotify"]]},
+ {id:"ytmp4",cat:"download",icon:"▣",name:"YouTube MP4",desc:"Download video YouTube",fields:[["url","URL YouTube"]]},
+ {id:"ytmp3",cat:"download",icon:"♫",name:"YouTube MP3",desc:"Download audio YouTube",fields:[["url","URL YouTube"]]},
+ {id:"ytshort",cat:"download",icon:"▯",name:"YouTube Shorts",desc:"Download Shorts",fields:[["url","URL Shorts"]]},
+ {id:"igdownload",cat:"download",icon:"◎",name:"Instagram Download",desc:"Download media Instagram",fields:[["url","URL Instagram"]]},
+ {id:"pint",cat:"media",icon:"P",name:"Pinterest Search",desc:"Cari gambar Pinterest",fields:[["query","Kata kunci"]]},
+ {id:"animetoreal",cat:"ai",icon:"◈",name:"Anime to Real",desc:"Transform gambar anime",fields:[["url","URL gambar anime"]]},
+ {id:"nanobanana",cat:"ai",icon:"✦",name:"Image Editor",desc:"Edit gambar dengan prompt",fields:[["image","URL gambar"],["prompt","Prompt edit"]]},
+ {id:"unliai",cat:"ai",icon:"AI",name:"Unlimited Chat AI",desc:"Chat AI berbasis prompt",fields:[["teks","Pesan"]]},
+ {id:"ssl",cat:"security",icon:"S",name:"SSL Checker",desc:"Cek informasi SSL",fields:[["url","Domain / URL"]]},
+ {id:"fakeaddress",cat:"generator",icon:"⌂",name:"Fake Address",desc:"Generate data alamat contoh",fields:[]},
+ {id:"dbgenerator",cat:"generator",icon:"DB",name:"Dataset Generator",desc:"Generate dataset",fields:[["limit","Jumlah data","10"]]},
+ {id:"randomuser",cat:"generator",icon:"R",name:"Random Data",desc:"Generate random user data",fields:[]},
+ {id:"hash",cat:"text",icon:"#",name:"Hash Generator",desc:"MD5 / SHA256",fields:[["text","Teks"],["type","Tipe: md5 / sha256","md5"]]},
+ {id:"decode64",cat:"text",icon:"64",name:"Base64 Decode",desc:"Decode Base64",fields:[["text","Base64"]]},
+ {id:"base64",cat:"text",icon:"64",name:"Base64 Encode",desc:"Encode ke Base64",fields:[["text","Teks"]]},
+ {id:"strengthpass",cat:"security",icon:"✓",name:"Password Strength",desc:"Analisis kekuatan password",fields:[["password","Password"]]},
+ {id:"textanalisis",cat:"text",icon:"T",name:"Text Analysis",desc:"Analisis karakter & teks",fields:[["text","Teks"]]},
+ {id:"screenshot",cat:"developer",icon:"▤",name:"Website Screenshot",desc:"Ambil screenshot website",fields:[["url","URL website"]]},
+ {id:"ogmail",cat:"security",icon:"@",name:"Email OSINT",desc:"Lookup metadata email via API",fields:[["email","Email"]]},
+ {id:"wdomain",cat:"security",icon:"W",name:"Domain Detail",desc:"Detail domain",fields:[["domain","Domain"]]},
+ {id:"ipintelligence",cat:"security",icon:"IP",name:"IP Intelligence",desc:"Informasi IP",fields:[["ip","IP (kosong = IP sendiri)"]]},
+ {id:"otp",cat:"generator",icon:"OTP",name:"OTP Generator",desc:"Generate OTP",fields:[["length","Panjang","6"]]},
+ {id:"tqr",cat:"generator",icon:"QR",name:"Text to QR Code",desc:"Buat QR dari teks",fields:[["text","Teks"],["size","Ukuran","400"]]},
+];
+
+let activeCat = "all";
+const $ = s => document.querySelector(s);
+
+function renderCategories(){
+  const all = `<div class="cat active" data-cat="all"><div class="cat-icon">✦</div><b>Semua</b><small>Semua tools</small></div>`;
+  $("#categories").innerHTML = all + CATEGORIES.map(c=>`<div class="cat" data-cat="${c.id}"><div class="cat-icon">${c.icon}</div><b>${c.name}</b><small>${c.desc}</small></div>`).join("");
+  document.querySelectorAll(".cat").forEach(el=>el.onclick=()=>{activeCat=el.dataset.cat;document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));el.classList.add("active");renderTools()});
+}
+function toolCard(t){
+  const fields=t.fields.map((f,i)=>{
+    const [name,label,def] = f;
+    const type = name==="password" ? "password" : "text";
+    return `<input ${i===0?'autofocus':''} data-field="${name}" type="${type}" placeholder="${label}" value="${def||""}">`;
+  }).join("");
+  return `<article class="tool" data-name="${t.name.toLowerCase()} ${t.desc.toLowerCase()}">
+    <div class="tool-head"><div class="tool-ico">${t.icon}</div><div><h3>${t.name}</h3><p>${t.desc}</p></div></div>
+    <div class="form">${fields}<button onclick="runTool('${t.id}',this)">Jalankan</button></div>
+    <div class="result hidden"></div>
+  </article>`;
+}
+function renderTools(){
+  const q=$("#search").value.toLowerCase();
+  const filtered=TOOLS.filter(t=>(activeCat==="all"||t.cat===activeCat)&&(`${t.name} ${t.desc}`.toLowerCase().includes(q)));
+  $("#tools").innerHTML=filtered.map(toolCard).join("");
+  $("#count").textContent=`${filtered.length} tools`;
+  $("#pageTitle").textContent=activeCat==="all"?"Semua Tools":CATEGORIES.find(c=>c.id===activeCat)?.name||"Tools";
+}
+$("#search").addEventListener("input",renderTools);
+function resetFilter(){activeCat="all";document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x.dataset.cat==="all"));$("#search").value="";renderTools()}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function renderData(data){
+  if(typeof data==="string"){
+    const url=(data.match(/https?:\/\/[^\s"'<>]+/i)||[])[0];
+    return url ? `${esc(data)}<br><br><a href="${esc(url)}" target="_blank" rel="noopener">Buka / Download hasil ↗</a>` : esc(data);
+  }
+  const pretty=JSON.stringify(data,null,2);
+  const urls=[...pretty.matchAll(/https?:\/\/[^\s"'\\]+/g)].map(x=>x[0].replace(/[,\]}]+$/,""));
+  let html=`<pre>${esc(pretty)}</pre>`;
+  if(urls.length) html+=`<div>${urls.slice(0,8).map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">↗ ${esc(u)}</a>`).join("<br>")}</div>`;
+  return html;
+}
+async function runTool(id,btn){
+  const card=btn.closest(".tool"), result=card.querySelector(".result");
+  const params=new URLSearchParams();
+  card.querySelectorAll("[data-field]").forEach(i=>{if(i.value.trim()!=="" )params.set(i.dataset.field,i.value.trim())});
+  btn.disabled=true;btn.textContent="Memproses...";
+  result.classList.remove("hidden");result.textContent="Menghubungi Rumah API...";
+  try{
+    const r=await fetch(`/api/proxy/${id}?${params.toString()}`);
+    const ct=r.headers.get("content-type")||"";
+    const body=ct.includes("application/json")?await r.json():await r.text();
+    if(!r.ok) throw new Error(typeof body==="string"?body:(body.message||"API error"));
+    result.innerHTML=renderData(body);
+  }catch(e){result.textContent="Error: "+e.message}
+  finally{btn.disabled=false;btn.textContent="Jalankan"}
+}
+renderCategories();renderTools();
+</script>
+</body>
+</html>
